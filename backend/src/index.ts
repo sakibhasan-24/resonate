@@ -3,9 +3,13 @@
 import express from "express";
 import dotenv from "dotenv";
 import { userRoutes } from "./modules/users/user.routes";
+import { clerkMiddleware } from "@clerk/express";
 import { connectDb } from "./dbConnection/db";
 dotenv.config();
 const app = express();
+app.use(express.json());
+
+app.use(clerkMiddleware());
 const port = process.env.PORT;
 
 app.use("/api/v1/users", userRoutes);
