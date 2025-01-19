@@ -25,4 +25,6 @@ const alblumSchema = new Schema<TAlbum>(
   }
 );
 
-export default mongoose.model<TAlbum>("Album", alblumSchema);
+const Album = mongoose.model<TAlbum>("Album", alblumSchema);
+
+export default Album;

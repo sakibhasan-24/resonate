@@ -1,6 +1,6 @@
 // console.log("Hello(Hey Wait stil more work to go) world!");
 
-import express from "express";
+import express, { NextFunction, Request, Response } from "express";
 import dotenv from "dotenv";
 import { userRoutes } from "./modules/users/user.routes";
 import { clerkMiddleware } from "@clerk/express";
@@ -27,6 +27,17 @@ const port = process.env.PORT;
 
 app.use("/api/v1/users", userRoutes);
 app.use("/api/v1/admin", adminRoute);
+app.use((err: any, req: Request, res: Response, next: NextFunction) => {
+  if (process.env.NODE_TYPE === "production") {
+    res.status(500).send("Something went wrong, please try again later");
+  }
+  console.error(err.message);
+  res.status(500).json({
+    message: "Server Error",
+    success: false,
+    error: err.message,
+  });
+});
 app.listen(port, () => {
   console.log(`Server running ons local port ${port}`);
   connectDb();
