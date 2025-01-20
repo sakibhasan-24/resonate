@@ -4,6 +4,7 @@ import { adminController } from "./admin.controller";
 
 const router = Router();
 
+router.get("/check", protectRoute, verifyAdmin, adminController.check);
 router.post(
   "/create-song",
   protectRoute,

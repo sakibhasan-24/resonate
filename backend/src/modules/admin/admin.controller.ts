@@ -123,9 +123,18 @@ const deleteAlbum = async (req: Request, res: Response, next: NextFunction) => {
     next(error);
   }
 };
+
+const check = async (req: Request, res: Response, next: NextFunction) => {
+  res.status(200).json({
+    message: "Admin is running correctly",
+    success: true,
+    admin: true,
+  });
+};
 export const adminController = {
   createSong,
   deleteSong,
   createAlbum,
   deleteAlbum,
+  check,
 };

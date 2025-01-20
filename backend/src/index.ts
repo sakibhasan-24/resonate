@@ -8,6 +8,7 @@ import { connectDb } from "./dbConnection/db";
 import fileUpload from "express-fileupload";
 import path from "path";
 import { adminRoute } from "./modules/admin/admin.routes";
+import { albumRoutes } from "./modules/album/album.routes";
 dotenv.config();
 const app = express();
 app.use(express.json());
@@ -27,6 +28,7 @@ const port = process.env.PORT;
 
 app.use("/api/v1/users", userRoutes);
 app.use("/api/v1/admin", adminRoute);
+app.use("/api/v1/album", albumRoutes);
 app.use((err: any, req: Request, res: Response, next: NextFunction) => {
   if (process.env.NODE_TYPE === "production") {
     res.status(500).send("Something went wrong, please try again later");
