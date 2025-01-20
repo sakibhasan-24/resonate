@@ -1,8 +1,7 @@
 import { Request, Response, Router } from "express";
+import { userController } from "./user.constroller";
+import { protectRoute } from "../../middleware/auth.middleware";
 
 const router = Router();
-router.get("/", (req: Request, res: Response) => {
-  res.send("Welcome to my USER API");
-});
-
+router.get("/getAllUsers", protectRoute, userController.getAllUsers);
 export const userRoutes = router;

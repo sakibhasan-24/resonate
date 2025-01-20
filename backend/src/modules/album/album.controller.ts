@@ -16,7 +16,7 @@ const getAlbumById = async (
   next: NextFunction
 ) => {
   try {
-    const album = await Album.findById(req.params.id);
+    const album = await Album.findById(req.params.id).populate("songs");
     if (!album) {
       res.status(404).json({ message: "Album not found" });
     }
