@@ -1,20 +1,17 @@
-import {
-  SignedIn,
-  SignedOut,
-  SignInButton,
-  UserButton,
-} from "@clerk/clerk-react";
+import { Route, Routes } from "react-router-dom";
+import Home from "./pages/home/Home";
+import Auth from "./pages/Auth/Auth";
 
 function App() {
   return (
     <>
-      <h1 className="text-red-200">Hello melody</h1>
-      <SignedOut>
-        <SignInButton />
-      </SignedOut>
-      <SignedIn>
-        <UserButton />
-      </SignedIn>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/auth" element={<Auth />} />
+        {/* <Route path="/about" element={<About />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="*" element={<NotFound />} /> */}
+      </Routes>
     </>
   );
 }

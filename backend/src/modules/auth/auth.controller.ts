@@ -27,9 +27,10 @@ const systemSignUp = async (req: Request, res: Response) => {
   try {
     const user = await authService.createUserInDb({
       clerkID: id,
-      fullName: `${firstName} ${lastName}`,
+      fullName: `${firstName}${lastName}`,
       imageUrl,
     });
+    console.log(user);
     res
       .status(201)
       .json({ message: "User created successfully", user, success: true });
