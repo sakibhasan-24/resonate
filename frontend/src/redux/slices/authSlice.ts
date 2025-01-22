@@ -7,6 +7,10 @@ interface AuthState {
 }
 
 //token needed......
+//redux query
+//mutation
+//folder structure
+//handle ui/ix
 const initialState: AuthState = {
   isAuthenticated: false,
   user: null,
